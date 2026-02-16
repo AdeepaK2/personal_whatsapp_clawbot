@@ -1,4 +1,5 @@
 import type { ChannelOutboundAdapter } from "../types.js";
+import { loadConfig } from "../../../config/config.js";
 import { chunkText } from "../../../auto-reply/chunk.js";
 import { shouldLogVerbose } from "../../../globals.js";
 import { sendPollWhatsApp } from "../../../web/outbound.js";
@@ -13,9 +14,14 @@ export const whatsappOutbound: ChannelOutboundAdapter = {
   resolveTarget: ({ to, allowFrom, mode }) =>
     resolveWhatsAppOutboundTarget({ to, allowFrom, mode }),
   sendText: async ({ to, text, accountId, deps, gifPlayback }) => {
+    const start = Date.now();
+    const cfg = loadConfig();
+    const watermark = cfg.channels?.whatsapp?.watermark;
+    const finalBody = watermark ? `${text}\n\n${watermark}` : text;
+
     const send =
       deps?.sendWhatsApp ?? (await import("../../../web/outbound.js")).sendMessageWhatsApp;
-    const result = await send(to, text, {
+    const result = await send(to, finalBody, {
       verbose: false,
       accountId: accountId ?? undefined,
       gifPlayback,

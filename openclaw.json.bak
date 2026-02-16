@@ -1,0 +1,20 @@
+{
+  gateway: {
+    mode: "local",
+  },
+  plugins: {
+
+    entries: {
+      whatsapp: {
+        enabled: true,
+      },
+    },
+  },
+  channels: {
+    whatsapp: {
+      allowFrom: [
+        "*"
+      ],
+    },
+  },
+}

@@ -83,6 +83,7 @@ export async function monitorWebChannel(
         mediaMaxMb: account.mediaMaxMb,
         blockStreaming: account.blockStreaming,
         groups: account.groups,
+        ignoreGroups: baseCfg.channels?.whatsapp?.ignoreGroups,
       },
     },
   } satisfies ReturnType<typeof loadConfig>;
@@ -197,6 +198,7 @@ export async function monitorWebChannel(
       sendReadReceipts: account.sendReadReceipts,
       debounceMs: inboundDebounceMs,
       shouldDebounce,
+      ignoreGroups: cfg.channels?.whatsapp?.ignoreGroups,
       onMessage: async (msg: WebInboundMsg) => {
         handledMessages += 1;
         lastMessageAt = Date.now();

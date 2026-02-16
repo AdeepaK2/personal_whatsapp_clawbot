@@ -34,6 +34,8 @@ export async function monitorWebInbox(options: {
   debounceMs?: number;
   /** Optional debounce gating predicate. */
   shouldDebounce?: (msg: WebInboundMessage) => boolean;
+  /** Filter out group messages. */
+  ignoreGroups?: boolean;
 }) {
   const inboundLogger = getChildLogger({ module: "web-inbound" });
   const inboundConsoleLog = createSubsystemLogger("gateway/channels/whatsapp").child("inbound");
@@ -171,6 +173,9 @@ export async function monitorWebInbox(options: {
       }
 
       const group = isJidGroup(remoteJid) === true;
+      if (options.ignoreGroups && group) {
+        continue;
+      }
       if (id) {
         const dedupeKey = `${options.accountId}:${remoteJid}:${id}`;
         if (isRecentInboundMessage(dedupeKey)) {

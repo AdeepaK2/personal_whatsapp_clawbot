@@ -99,6 +99,10 @@ export type WhatsAppConfig = {
   ackReaction?: WhatsAppAckReactionConfig;
   /** Debounce window (ms) for batching rapid consecutive messages from the same sender (0 to disable). */
   debounceMs?: number;
+  /** Filter out group messages. */
+  ignoreGroups?: boolean;
+  /** Append a watermark to outgoing messages. */
+  watermark?: string;
   /** Heartbeat visibility settings for this channel. */
   heartbeat?: ChannelHeartbeatVisibilityConfig;
 };
@@ -147,6 +151,10 @@ export type WhatsAppAccountConfig = {
   ackReaction?: WhatsAppAckReactionConfig;
   /** Debounce window (ms) for batching rapid consecutive messages from the same sender (0 to disable). */
   debounceMs?: number;
+  /** Filter out group messages. */
+  ignoreGroups?: boolean;
+  /** Append a watermark to outgoing messages. */
+  watermark?: string;
   /** Heartbeat visibility settings for this account. */
   heartbeat?: ChannelHeartbeatVisibilityConfig;
 };
