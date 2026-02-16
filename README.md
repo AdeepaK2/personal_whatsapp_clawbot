@@ -548,3 +548,4 @@ Thanks to all clawtributors:
   <a href="https://github.com/ronak-guliani"><img src="https://avatars.githubusercontent.com/u/23518228?v=4&s=48" width="48" height="48" alt="ronak-guliani" title="ronak-guliani"/></a> <a href="https://github.com/search?q=William%20Stock"><img src="assets/avatar-placeholder.svg" width="48" height="48" alt="William Stock" title="William Stock"/></a>
 </p>
 "# personal_whatsapp_clawbot" 
+"# personal_whatsapp_clawbot" 
