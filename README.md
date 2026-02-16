@@ -114,6 +114,7 @@ Default behavior on Telegram/WhatsApp/Signal/iMessage/Microsoft Teams/Discord/Go
 
 - **DM pairing** (`dmPolicy="pairing"` / `channels.discord.dmPolicy="pairing"` / `channels.slack.dmPolicy="pairing"`; legacy: `channels.discord.dm.policy`, `channels.slack.dm.policy`): unknown senders receive a short pairing code and the bot does not process their message.
 - Approve with: `openclaw pairing approve <channel> <code>` (then the sender is added to a local allowlist store).
+  - Example (WhatsApp): `pnpm openclaw pairing approve whatsapp MAXXJTUM`
 - Public inbound DMs require an explicit opt-in: set `dmPolicy="open"` and include `"*"` in the channel allowlist (`allowFrom` / `channels.discord.allowFrom` / `channels.slack.allowFrom`; legacy: `channels.discord.dm.allowFrom`, `channels.slack.dm.allowFrom`).
 
 Run `openclaw doctor` to surface risky/misconfigured DM policies.
@@ -549,5 +550,6 @@ Thanks to all clawtributors:
 </p>
 "# personal_whatsapp_clawbot" 
 "# personal_whatsapp_clawbot" 
-#   p e r s o n a l _ w h a t s a p p _ c l a w b o t  
+#   p e r s o n a l _ w h a t s a p p _ c l a w b o t 
+ 
  
