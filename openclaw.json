@@ -2,7 +2,7 @@
   "agents": {
     "defaults": {
       "model": {
-        "primary": "google/gemini-2.0-flash"
+        "primary": "openai/gpt-4o-mini"
       },
       "compaction": {
         "mode": "safeguard"
@@ -42,30 +42,27 @@
         "api": "openai-completions",
         "baseUrl": "https://openrouter.ai/api/v1",
         "apiKey": "env:OPENROUTER_API_KEY",
-        "headers": {
-          "HTTP-Referer": "http://localhost:3000",
-          "X-Title": "OpenClaw Agent"
-        },
         "models": [
-          {
-            "id": "mistralai/mistral-small-3.1-24b-instruct:free",
-            "name": "Mistral Small 3 (Free)",
-            "contextWindow": 32768,
-            "maxTokens": 8192,
-            "reasoning": false
-          },
-          {
-            "id": "google/gemma-3-27b-it:free",
-            "name": "Gemma 3 27B (Free)",
-            "contextWindow": 32768,
-            "maxTokens": 8192,
-            "reasoning": false
-          },
           {
             "id": "openai/gpt-oss-120b:free",
             "name": "GPT-OSS 120B (Free)",
             "contextWindow": 32768,
             "maxTokens": 4096,
+            "reasoning": false
+          }
+        ]
+      },
+      "openai": {
+        "api": "openai-completions",
+        "baseUrl": "https://api.openai.com/v1",
+        "apiKey": "env:OPENAI_API_KEY",
+        "models": [
+          {
+            "id": "gpt-4o-mini",
+            "name": "GPT-4o Mini",
+            "contextWindow": 128000,
+            "maxTokens": 16384,
+            "input": ["text", "image"],
             "reasoning": false
           }
         ]
@@ -76,8 +73,8 @@
         "apiKey": "env:GEMINI_API_KEY",
         "models": [
           {
-            "id": "gemini-2.0-flash",
-            "name": "Gemini 2.0 Flash",
+            "id": "gemini-3.0-flash",
+            "name": "Gemini 3.0 Flash",
             "api": "google-generative-ai",
             "contextWindow": 1048576,
             "maxTokens": 8192,
@@ -119,6 +116,16 @@
     "auth": {
       "mode": "token",
       "token": "0aa99147388fcd3fd5bbabd45d4a9a73c29017df7ee64100"
+    }
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": false
+      },
+      "fetch": {
+        "enabled": true
+      }
     }
   },
   "plugins": {
